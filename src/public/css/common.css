@@ -1,0 +1,31 @@
+.app {
+    max-width: 1540px;
+}
+
+.header {
+    height: 82px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    background: black;
+}
+
+.header-link {
+    margin-left: 40px;
+}
+
+@media screen and (max-width: 850px) {
+    .header {
+        height: 60px;
+    }
+
+    .header-link {
+        width: 25%;
+        margin-left: 10px;
+    }
+
+    .header-img {
+        width: 100%;
+    }
+}
