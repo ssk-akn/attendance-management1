@@ -15,13 +15,11 @@
         認証メールが送信されました。
     </div>
     @endif
-    <div class="verification-mail">
-        <form action="{{ route('verification.send') }}" method="POST">
-            @csrf
-            <button class="verification-mail__button" type="submit">
-                認証メールを再送する
-            </button>
-        </form>
-    </div>
+    <form action="{{ route('verification.send') }}" method="POST">
+        @csrf
+        <button class="verification-mail__button" type="submit">
+            認証メールを再送する
+        </button>
+    </form>
 </div>
 @endsection

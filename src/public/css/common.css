@@ -1,3 +1,8 @@
+html, body, main {
+    height: 100%;
+    background-color: #F0EFF2;
+}
+
 .app {
     max-width: 1540px;
 }

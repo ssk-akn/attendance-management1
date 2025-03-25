@@ -11,7 +11,7 @@
 <body>
     <div class="app">
         <header class="header">
-            <a class="header-link" href="/">
+            <a class="header-link" href="/login">
                 <img src="{{ asset('image/logo.svg') }}" alt="COACHTECH" class="header-img">
             </a>
             @if (Auth::check())

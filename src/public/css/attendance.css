@@ -1,0 +1,90 @@
+.attendance-form {
+    margin: 170px auto;
+    text-align: center;
+}
+.attendance-status {
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 50px;
+    background: #C8C8C8;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #696969;
+}
+
+.attendance-date {
+    margin-bottom: 30px;
+    font-size: 40px;
+}
+
+.attendance-time {
+    margin-bottom: 70px;
+    letter-spacing: 3px;
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.attendance-button {
+    display: flex;
+    justify-content: center;
+}
+
+.attendance-button__work,
+.attendance-button__break {
+    margin: 0 40px;
+    padding: 18px 70px;
+    border: none;
+    border-radius: 20px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.attendance-button__work {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.attendance-button__break {
+    background: #FFFFFF;
+}
+
+.attendance-comment {
+    letter-spacing: 3px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 850px) {
+    .attendance-form {
+        margin: 100px auto;
+    }
+
+    .attendance-status {
+        margin-bottom: 30px;
+        padding: 8px 15px;
+        font-size: 15px;
+    }
+
+    .attendance-date {
+        margin-bottom: 25px;
+        font-size: 35px;
+    }
+
+    .attendance-time {
+        margin-bottom: 50px;
+        font-size: 70px;
+    }
+
+    .attendance-button__work,
+    .attendance-button__break {
+        margin: 0 30px;
+        padding: 10px 50px;
+        font-size: 28px;
+    }
+
+    .attendance-comment {
+        font-size: 22px;
+    }
+}

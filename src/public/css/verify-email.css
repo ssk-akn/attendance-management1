@@ -1,0 +1,30 @@
+.verify-page {
+    width: 80%;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.verify-message,
+.completion-message {
+    margin-bottom: 50px;
+    font-size: 24px;
+}
+
+.verification-mail__button {
+    margin: 0 auto;
+    border: none;
+    background: #FFFFFF;
+    font-size: 20px;
+    color: #0073CC;
+}
+
+@media screen and (max-width: 850px) {
+    .verify-message,
+    .completion-message {
+        font-size: 20px;
+    }
+
+    .verification-mail__button {
+        font-size: 18px;
+    }
+}

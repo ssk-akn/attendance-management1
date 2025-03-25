@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\ListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('/attendance', [AttendanceController::class, 'getAttendance']);
+    Route::post('/attendance/work-start', [AttendanceController::class, 'workStart']);
+    Route::patch('/attendance/work-end', [AttendanceController::class, 'workEnd']);
+    Route::post('/attendance/break-start', [AttendanceController::class, 'breakStart']);
+    Route::patch('/attendance/break-end', [AttendanceController::class, 'breakEnd']);
+    Route::get('/attendance/list', [ListController::class, 'getList'])->name('attendance.list');
 });
