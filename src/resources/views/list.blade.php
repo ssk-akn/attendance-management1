@@ -18,7 +18,7 @@
             'year' => Carbon::create($year, $month, 1)->subMonth()->year,
             'month' => Carbon::create($year, $month, 1)->subMonth()->month,
         ]) }}" class="list-link__item">
-            <img src="{{ asset('image/left.png') }}" alt="←" class="previous-arrow">
+            <img src="{{ asset('image/left.png') }}" alt="←">
             <span class="previous-month">前月</span>
         </a>
         <p class="list-month">
@@ -28,9 +28,9 @@
         <a href="{{ route('attendance.list', [
             'year' => Carbon::create($year, $month, 1)->addMonth()->year,
             'month' => Carbon::create($year, $month, 1)->addMonth()->month,
-        ]) }}" class="next-month">
-            <img src="{{ asset('image/right.png') }}" alt="→" class="previous-arrow">
-            <span class="previous-month">前月</span>
+        ]) }}" class="list-link__item">
+        <span class="previous-month">翌月</span>
+        <img src="{{ asset('image/right.png') }}" alt="→">
         </a>
     </div>
     <table class="list-table">
@@ -42,20 +42,28 @@
             <th class="list-table__header">合計</th>
             <th class="list-table__header">詳細</th>
         </tr>
-        @foreach ($attendances as $attendance)
+        @foreach ($days as $date => $attendance)
         <tr class="list-table__row">
             <td class="list-table__item">
-                {{ Carbon::parse($attendance->date)->isoFormat('M/D(ddd)') }}
+                {{ Carbon::parse($date)->isoFormat('M/D(ddd)') }}
             </td>
             <td class="list-table__item">
-                {{ Carbon::parse($attendance->work_start)->isoFormat('HH:mm')}}
+                {{ $attendance ? Carbon::parse($attendance->work_start)->isoFormat('HH:mm') : '' }}
             </td>
             <td class="list-table__item">
-                {{ Carbon::parse($attendance->work_end)->isoFormat('HH:mm')}}
+                {{ $attendance ? Carbon::parse($attendance->work_end)->isoFormat('HH:mm') : '' }}
             </td>
-            <td class="list-table__item"></td>
-            <td class="list-table__item"></td>
-            <td class="list-table__item"></td>
+            <td class="list-table__item">
+                {{ $attendance ? $attendance->break_time : '' }}
+            </td>
+            <td class="list-table__item">
+                {{ $attendance ? $attendance->total_work_time : '' }}
+            </td>
+            <td class="list-table__item">
+                @if ($attendance)
+                <a href="/attendance/{{ $attendance->id }}" class="detail-link">詳細</a>
+                @endif
+            </td>
         </tr>
         @endforeach
     </table>
