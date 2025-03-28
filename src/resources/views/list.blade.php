@@ -23,7 +23,7 @@
         </a>
         <p class="list-month">
             <img src="{{ asset('image/calendar.png') }}" alt="" class="calendar">
-            <span class="this-month">{{ $year . '/' . $month }}</span>
+            <span class="this-month">{{ $year . '/' . sprintf('%02d', $month) }}</span>
         </p>
         <a href="{{ route('attendance.list', [
             'year' => Carbon::create($year, $month, 1)->addMonth()->year,
@@ -45,19 +45,19 @@
         @foreach ($days as $date => $attendance)
         <tr class="list-table__row">
             <td class="list-table__item">
-                {{ Carbon::parse($date)->isoFormat('M/D(ddd)') }}
+                {{ Carbon::parse($date)->isoFormat('MM/DD(ddd)') }}
             </td>
             <td class="list-table__item">
                 {{ $attendance ? Carbon::parse($attendance->work_start)->isoFormat('HH:mm') : '' }}
             </td>
             <td class="list-table__item">
-                {{ $attendance ? Carbon::parse($attendance->work_end)->isoFormat('HH:mm') : '' }}
+                {{ $attendance && $attendance->work_end ? Carbon::parse($attendance->work_end)->isoFormat('HH:mm') : '' }}
             </td>
             <td class="list-table__item">
-                {{ $attendance ? $attendance->break_time : '' }}
+                {{ $attendance && $attendance->break_time ? $attendance->break_time : '' }}
             </td>
             <td class="list-table__item">
-                {{ $attendance ? $attendance->total_work_time : '' }}
+                {{ $attendance && $attendance->total_work_time ? $attendance->total_work_time : '' }}
             </td>
             <td class="list-table__item">
                 @if ($attendance)

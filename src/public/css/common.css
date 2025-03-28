@@ -1,5 +1,4 @@
 html, body, main {
-    height: 100%;
     background-color: #F0EFF2;
 }
 
@@ -20,6 +19,30 @@ html, body, main {
     margin-left: 40px;
 }
 
+.header-nav {
+    display: flex;
+}
+
+.header-nav__item {
+    list-style: none;
+    margin-right: 30px;
+}
+
+.header-nav__link {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.logout-button {
+    border: none;
+    background: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
 @media screen and (max-width: 850px) {
     .header {
         height: 60px;
@@ -32,5 +55,14 @@ html, body, main {
 
     .header-img {
         width: 100%;
+    }
+
+    .header-nav__item {
+        margin-right: 20px;
+    }
+
+    .header-nav__link,
+    .logout-button {
+        font-size: 18px;
     }
 }

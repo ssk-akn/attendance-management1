@@ -18,6 +18,15 @@
             <ul class="header-nav">
                 @yield('link')
                 <li class="header-nav__item">
+                    <a href="/attendance" class="header-nav__link">勤怠</a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="/attendance/list" class="header-nav__link">勤怠一覧</a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="" class="header-nav__link">申請</a>
+                </li>
+                <li class="header-nav__item">
                     <form action="/logout" method="post" class="logout-form">
                         @csrf
                         <button class="logout-button">ログアウト</button>

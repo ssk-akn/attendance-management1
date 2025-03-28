@@ -1,6 +1,6 @@
 .list {
     width: 70%;
-    margin: 0 auto;
+    margin: 60px auto;
 }
 
 .list-header {
@@ -16,7 +16,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
-    padding: 10px;
+    padding: 3px 15px;
     border-radius: 10px;
     background: #FFFFFF;
 }
@@ -84,4 +84,19 @@
 .detail-link {
     text-decoration: none;
     color: #000000;
+}
+
+@media screen and (max-width: 850px) {
+    .list {
+        width: 90%;
+        margin: 40px auto;
+    }
+
+    .list-header {
+        margin-bottom: 30px;
+    }
+
+    .list-link {
+        margin-bottom: 30px;
+    }
 }
