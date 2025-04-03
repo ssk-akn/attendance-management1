@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\BreakTime;
 use App\Models\Correction;
+use Carbon\Carbon;
 
 class Attendance extends Model
 {
@@ -32,5 +33,30 @@ class Attendance extends Model
     public function corrections()
     {
         return $this->hasMany(Correction::class);
+    }
+
+    public function getFormattedStartAttribute()
+    {
+        return $this->work_start ? Carbon::parse($this->work_start)->isoFormat('HH:mm') : '';
+    }
+
+    public function getFormattedEndAttribute()
+    {
+        return $this->work_end ? Carbon::parse($this->work_end)->isoFormat('HH:mm') : '';
+    }
+
+    public function getFormattedYearAttribute()
+    {
+        return Carbon::parse($this->date)->isoFormat('YYYY年');
+    }
+
+    public function getFormattedDateAttribute()
+    {
+        return Carbon::parse($this->date)->isoFormat('M月D日');
+    }
+
+    public function getFormattedWeekAttribute()
+    {
+        return Carbon::parse($this->date)->isoFormat('(ddd)');
     }
 }

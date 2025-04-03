@@ -24,4 +24,5 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::patch('/attendance/break-end', [AttendanceController::class, 'breakEnd']);
     Route::get('/attendance/list', [ListController::class, 'getList'])->name('attendance.list');
     Route::get('/attendance/{id}', [DetailController::class, 'getDetail']);
+    Route::post('/attendance/detail', [DetailController::class, 'create']);
 });
