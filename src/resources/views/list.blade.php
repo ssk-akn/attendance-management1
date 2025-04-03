@@ -48,10 +48,10 @@
                 {{ Carbon::parse($date)->isoFormat('MM/DD(ddd)') }}
             </td>
             <td class="list-table__item">
-                {{ $attendance ? Carbon::parse($attendance->work_start)->isoFormat('HH:mm') : '' }}
+                {{ $attendance ? $attendance->formatted_start : '' }}
             </td>
             <td class="list-table__item">
-                {{ $attendance && $attendance->work_end ? Carbon::parse($attendance->work_end)->isoFormat('HH:mm') : '' }}
+                {{ $attendance && $attendance->work_end ? $attendance->formatted_end : '' }}
             </td>
             <td class="list-table__item">
                 {{ $attendance && $attendance->break_time ? $attendance->break_time : '' }}

@@ -38,6 +38,8 @@ class CorrectionRequest extends FormRequest
     public function messages()
     {
         return [
+            'new_work_start.required' => '出勤時間を入力してください',
+            'new_work_end.required' => '退勤時間を入力してください',
             'remarks.required' => '備考を記入してください',
         ];
     }

@@ -118,3 +118,44 @@
     font-weight: bold;
     color: #FFFFFF;
 }
+
+@media screen and (max-width: 850px) {
+    .detail {
+        width: 80%;
+    }
+
+    .detail-header {
+        font-size: 26px;
+    }
+
+    .detail-table__header {
+        padding: 28px 40px;
+    }
+
+    .year,
+    .name,
+    .work-start,
+    .break-start,
+    .remarks {
+        margin-left: 20px;
+    }
+
+    .month {
+        margin-left: 100px;
+    }
+
+    .correction-time__span {
+        margin: 0 50px;
+    }
+
+    .detail-table__item textarea {
+        width: 250px;
+        height: 40px;
+    }
+
+    .detail-button__submit {
+        padding: 6px;
+        width: 110px;
+        font-size: 20px;
+    }
+}

@@ -34,7 +34,7 @@
                     @if($waitApproval)
                         <div class="work-time">
                             <div class="work-start">{{ $correction->formatted_start }}</div>
-                            <span class="correction-span">～</span>
+                            <span class="correction-time__span">～</span>
                             <div class="work-end">{{ $correction->formatted_end }}</div>
                         </div>
                     @else
@@ -59,7 +59,7 @@
                         @if($waitApproval)
                             <div class="break-time">
                                 <div class="break-start">{{ $break['start'] }}</div>
-                                <span class="correction-span">～</span>
+                                <span class="correction-time__span">～</span>
                                 <div class="break-end">{{ $break['end'] }}</div>
                             </div>
                         @else
