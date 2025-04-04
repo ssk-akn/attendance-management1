@@ -59,4 +59,9 @@ class Attendance extends Model
     {
         return Carbon::parse($this->date)->isoFormat('(ddd)');
     }
+
+    public function getFormattedStampAttribute()
+    {
+        return Carbon::parse($this->date)->isoFormat('YYYY/MM/DD');
+    }
 }

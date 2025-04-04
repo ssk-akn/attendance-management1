@@ -8,12 +8,23 @@ use App\Models\Correction;
 
 class CorrectionController extends Controller
 {
-    public function getRequestList()
+    public function getRequestList(Request $request)
     {
-        $userId = Auth::id();
+        $user = Auth::user();
+        $page = request('page', 'wait');
 
-        $corrections = Correction::where('user_id', $userId)->all();
+        if ($page === 'approved') {
+            $corrections = Correction::with('attendance')
+            ->where('user_id', $user->id)
+            ->where('status', '承認済み')
+            ->get();
+        } else {
+            $corrections = Correction::with('attendance')
+            ->where('user_id', $user->id)
+            ->where('status', '承認待ち')
+            ->get();
+        }
 
-        return view('request', compact('corrections'));
+        return view('request', compact('user', 'corrections', 'page'));
     }
 }

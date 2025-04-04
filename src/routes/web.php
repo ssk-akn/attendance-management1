@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\CorrectionController;
 
 /*
 |--------------------------------------------------------------------------

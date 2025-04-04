@@ -24,7 +24,7 @@
                     <a href="/attendance/list" class="header-nav__link">勤怠一覧</a>
                 </li>
                 <li class="header-nav__item">
-                    <a href="" class="header-nav__link">申請</a>
+                    <a href="/stamp_correction_request/list" class="header-nav__link">申請</a>
                 </li>
                 <li class="header-nav__item">
                     <form action="/logout" method="post" class="logout-form">

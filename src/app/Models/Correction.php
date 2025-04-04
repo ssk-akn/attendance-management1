@@ -42,6 +42,11 @@ class Correction extends Model
         return $this->new_work_end ? Carbon::parse($this->new_work_end)->isoFormat('HH:mm') : '';
     }
 
+    public function getFormattedDateAttribute()
+    {
+        return Carbon::parse($this->requested_at)->isoFormat('YYYY/MM/DD');
+    }
+
     protected $casts = [
         'new_breaks' => 'array',
     ];
