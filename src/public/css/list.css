@@ -75,10 +75,12 @@
 .list-table__header {
     width: 15%;
     padding: 10px;
+    letter-spacing: 0.15em;
 }
 
 .list-table__item {
     padding: 10px;
+    letter-spacing: 0.15em;
 }
 
 .detail-link {

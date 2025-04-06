@@ -11,7 +11,10 @@
     </div>
     <form action="/attendance/detail" method="post" class="detail-form">
         @csrf
-        @php $waitApproval = optional($correction)->status === '承認待ち'; @endphp
+        @php
+            $waitApproval = optional($correction)->status === '承認待ち';
+            use Carbon\Carbon;
+        @endphp
         <table class="detail-table">
             <tr class="detail-table__row">
                 <th class="detail-table__header">名前</th>
@@ -63,9 +66,9 @@
                                 <div class="break-end">{{ $break['end'] }}</div>
                             </div>
                         @else
-                            <input type="text" name="new_break_start[]" value="{{ $break->formatted_start }}" class="time">
+                            <input type="text" name="new_break_start[]" value="{{ Carbon::parse($break['start'])->isoFormat('HH:mm') }}" class="time">
                             <span class="time-span">～</span>
-                            <input type="text" name="new_break_end[]" value="{{ $break->formatted_end }}" class="time">
+                            <input type="text" name="new_break_end[]" value="{{ Carbon::parse($break['end'])->isoFormat('HH:mm') }}" class="time">
                         @endif
                     </td>
                     @error('new_break_start.$index')

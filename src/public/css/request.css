@@ -1,0 +1,95 @@
+.request-list {
+    margin: 30px auto;
+    width: 70%;
+}
+
+.request-list__header {
+    margin-bottom: 40px;
+    padding-left: 20px;
+    border-left: 8px solid #000000;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.request-status {
+    display: flex;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #000000;
+}
+
+.request-status__wait,
+.request-status__approved {
+    padding: 10px 40px;
+}
+
+.request-status__wait a,
+.request-status__approved a {
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.15ex;
+    color: #000000;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.request-table {
+    width: 100%;
+    border-radius: 10px;
+    background: #FFFFFF;
+}
+
+.request-table__row {
+    border-bottom: 3px solid #E1E1E1;
+}
+
+.request-table__row:last-of-type {
+    border: none;
+}
+
+.request-table__header {
+    padding: 10px 25px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    color: #737373;
+}
+
+.request-table__item {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    color: #737373;
+}
+
+.request-table__item:nth-child(2n+3) {
+    letter-spacing: normal;
+}
+
+.request-table__detail {
+    text-decoration: none;
+    color: #737373;
+}
+
+@media screen and (max-width: 850px) {
+    .request-list {
+        width: 90%;
+    }
+
+    .request-list__header {
+        font-size: 25px;
+    }
+
+    .request-table__header {
+        padding: 8px 15px;
+        font-size: 15px;
+    }
+
+    .request-table__item {
+        padding: 8px 15px;
+        font-size: 15px;
+    }
+}

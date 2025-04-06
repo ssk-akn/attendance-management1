@@ -8,7 +8,7 @@
 <div class="request-list">
     <div class="request-list__header">申請一覧</div>
     <div class="request-status">
-        <div class="request-status__unapproved">
+        <div class="request-status__wait">
             <a href="{{ url('/stamp_correction_request/list/?page=wait') }}" class="{{ $page === 'wait' ? 'active' : 'passive' }}">承認待ち</a>
         </div>
         <div class="request-status__approved">
