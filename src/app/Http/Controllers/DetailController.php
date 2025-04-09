@@ -13,14 +13,18 @@ class DetailController extends Controller
 {
     public function getDetail($id)
     {
-        $user = Auth::user();
-        $attendance = Attendance::with('breaks')->findOrFail($id);
+        $attendance = Attendance::with(['user', 'breaks'])->findOrFail($id);
+        $user = $attendance->user;
         $correction = Correction::where('attendance_id', $id)->latest('requested_at')->first();
 
-        return view('detail', compact('user', 'attendance', 'correction'));
+        if (!$correction || $correction->status === '認証済み') {
+            $correction = null;
+        }
+
+        return view('detail', compact('attendance', 'correction', 'user'));
     }
 
-    public function create(CorrectionRequest $request)
+    public function correction(CorrectionRequest $request)
     {
         $userId = $request->user_id;
         $attendanceId = $request->attendance_id;

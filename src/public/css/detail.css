@@ -40,18 +40,12 @@
     font-weight: bold;
 }
 
-.work-time {
-    display: flex;
-}
-
 .date-wrap {
     display: flex;
 }
 
 .year,
 .name,
-.work-start,
-.break-start,
 .remarks {
     margin-left: 35px;
 }
@@ -69,16 +63,8 @@
     font-weight: bold;
 }
 
-.break-time {
-    display: flex;
-}
-
 .time-span {
     margin: 0 30px;
-}
-
-.correction-span {
-    margin: 0 55px;
 }
 
 .detail-table__item textarea {

@@ -1,14 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.admin-app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin/login.css') }}">
 @endsection
 
 @section('content')
 <div class="login-form">
-    <div class="login-form__heading">ログイン</div>
+    <div class="login-form__heading">管理者ログイン</div>
     <div class="login-form__inner">
-        <form class="login-form__form" action="\login" method="post">
+        <form class="login-form__form" action="/admin/login" method="post">
             @csrf
             <div class="login-form__group">
                 <label for="email" class="login-form__label">メールアドレス</label>
@@ -29,12 +29,9 @@
                 @enderror
             </div>
             <div class="login-form__button">
-                <button class="login-form__button-submit">ログインする</button>
+                <button class="login-form__button-submit">管理者ログインする</button>
             </div>
         </form>
-        <div class="register-link">
-            <a href="/register">会員登録はこちら</a>
-        </div>
     </div>
 </div>
 @endsection
