@@ -21,7 +21,9 @@ class DetailController extends Controller
             $correction = null;
         }
 
-        return view('detail', compact('attendance', 'correction', 'user'));
+        $isAdmin = Auth::user()->isAdmin();
+
+        return view('detail', compact('attendance', 'correction', 'user', 'isAdmin'));
     }
 
     public function correction(CorrectionRequest $request)

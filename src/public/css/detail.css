@@ -63,16 +63,33 @@
     font-weight: bold;
 }
 
+.correction-time {
+    width: 20%;
+    margin: 10px 0;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .time-span {
     margin: 0 30px;
 }
 
-.detail-table__item textarea {
+.remarks {
     margin: 10px 0;
     padding: 5px 10px;
     width: 300px;
     height: 60px;
     border: 1px solid #E1E1E1;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.correction-remarks {
+    margin-left: 30px;
+    padding: 10px;
+    border: none;
     font-size: 14px;
     font-weight: bold;
 }
@@ -134,9 +151,13 @@
         margin: 0 50px;
     }
 
-    .detail-table__item textarea {
+    .remarks {
         width: 250px;
         height: 40px;
+    }
+
+    .correction-remarks {
+        margin-left: 10px;
     }
 
     .detail-button__submit {

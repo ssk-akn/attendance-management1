@@ -8,6 +8,8 @@ use App\Http\Controllers\CorrectionController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\ListController as AdminListController;
 use App\Http\Controllers\Admin\DetailController as AdminDetailController;
+use App\Http\Controllers\Admin\CorrectionController as AdminCorrectionController;
+use App\Http\Controllers\StaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,19 +24,24 @@ use App\Http\Controllers\Admin\DetailController as AdminDetailController;
 Route::prefix('admin')->group(function () {
     Route::middleware('guest')->group(function () {
         Route::get('/login', [AuthenticatedSessionController::class, 'create']);
-        Route::post('/login', [AuthenticatedSessionController::class, 'store']);
     });
 
     Route::middleware(['auth', 'admin'])->group(function () {
+        Route::post('/login', [AuthenticatedSessionController::class, 'store']);
         Route::get('/attendance/list', [AdminListController::class, 'getAttendance'])->name('admin.list');
     });
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/attendance/{id}', [AdminDetailController::class, 'getDetail']);
+    Route::get('/attendance/{id}', [AdminDetailController::class, 'getDetail'])->name('admin.detail');
     Route::post('/attendance/correction/update', [AdminDetailController::class, 'update'])->name('attendance.update');
     Route::get('/stamp_correction_request/list', [AdminCorrectionController::class, 'getRequestList']);
 });
+
+
+Route::get('/admin/staff/list', [StaffController::class, 'getStaffList']);
+Route::get('admin/attendance/staff/{id}', [StaffController::class, 'getAttendance'])->name('admin.attendance');
+Route::get('/stamp_correction_request/approve/{attendance_correct_request}', [AdminCorrectionController::class, 'getCorrection']);
 
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('/attendance', [AttendanceController::class, 'getAttendance']);

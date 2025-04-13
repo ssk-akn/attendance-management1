@@ -6,7 +6,6 @@
 
 @section('content')
 @php
-    $isAdmin = Auth::user()->isAdmin();
     use Carbon\Carbon;
 @endphp
 <div class="detail">
@@ -28,19 +27,23 @@
             <tr class="detail-table__row">
                 <th class="detail-table__header">日付</th>
                 <td class="detail-table__item">
+                    @if ($isAdmin)
+                    <input type="text" name="work_date" value="{{ $attendance->formatted_tear . $attendance->formatted_date }}">
+                    @else
                     <div class="date-wrap">
                         <div class="year">{{ $attendance->formatted_year }}</div>
                         <div class="month">{{ $attendance->formatted_date }}</div>
                     </div>
+                    @endif
                 </td>
             </tr>
             <tr class="detail-table__row">
                 <th class="detail-table__header">出勤・退勤</th>
                 <td class="detail-table__item">
                     @if($correction)
-                        <input type="text" name="new_work_start" value="{{ $correction->formatted_start }}" readonly class="time">
+                        <input type="text" name="new_work_start" value="{{ $correction->formatted_start }}" readonly class="correction-time">
                         <span class="time-span">～</span>
-                        <input type="text" name="new_work_end" value="{{ $correction->formatted_end }}" readonly class="time">
+                        <input type="text" name="new_work_end" value="{{ $correction->formatted_end }}" readonly class="correction-time">
                     @else
                         <input type="text" name="new_work_start" value="{{ $attendance->formatted_start }}" class="time">
                         <span class="time-span">～</span>
@@ -61,13 +64,13 @@
                 </th>
                 <td class="detail-table__item">
                     @if($correction)
-                        <input type="text" name="new_break_start[]" value="{{ $break['start'] }}" readonly class="time">
+                        <input type="text" name="new_break_start[]" value="{{ $break['start'] }}" readonly class="correction-time">
                         <span class="time-span">～</span>
-                        <input type="text" name="new_break_start[]" value="{{ $break['end'] }}" readonly class="time">
+                        <input type="text" name="new_break_start[]" value="{{ $break['end'] }}" readonly class="correction-time">
                     @else
-                        <input type="text" name="new_break_start[]" value="{{ Carbon::parse($break['start'])->isoFormat('HH:mm') }}" class="time">
+                        <input type="text" name="new_break_start[]" value="{{ Carbon::parse($break['break_start'])->isoFormat('HH:mm') }}" class="time">
                         <span class="time-span">～</span>
-                        <input type="text" name="new_break_end[]" value="{{ Carbon::parse($break['end'])->isoFormat('HH:mm') }}" class="time">
+                        <input type="text" name="new_break_end[]" value="{{ Carbon::parse($break['break_end'])->isoFormat('HH:mm') }}" class="time">
                     @endif
                 </td>
                 @error('new_break_start.$index')
@@ -77,7 +80,7 @@
             @endforeach
             @php
                 $breaksCount = count($attendance->breaks);
-            @endif
+            @endphp
             @if ($isAdmin && is_null($correction))
             <tr class="detail-table__row">
                 <th class="detail-table__header">
@@ -94,7 +97,7 @@
                 <th class="detail-table__header">備考</th>
                 <td class="detail-table__item">
                     @if($correction)
-                        <textarea name="remarks" readonly class="remarks">{{ $correction->remarks }}</textarea>
+                        <textarea name="remarks" readonly class="correction-remarks">{{ $correction->remarks }}</textarea>
                     @else
                         <textarea name="remarks"></textarea>
                     @endif

@@ -30,7 +30,7 @@ class FortifyServiceProvider extends ServiceProvider
             {
                 $user = $request->user();
 
-                if ($user->role === 'admin') {
+                if ($request->is('admin/*')) {
                     return redirect('/admin/login');
                 }
 

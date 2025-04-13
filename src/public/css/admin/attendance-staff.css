@@ -1,0 +1,109 @@
+.attendance-list {
+    width: 70%;
+    margin: 60px auto;
+}
+
+.attendance-list__header {
+    margin-bottom: 40px;
+    padding: 5px 20px;
+    border-left: 8px solid #000000;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.list-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 3px 15px;
+    border-radius: 10px;
+    background: #FFFFFF;
+}
+
+.list-link__item {
+    text-decoration: none;
+    color: #737373;
+}
+
+.list-link__item img {
+    width: 20px;
+}
+
+.list-month {
+    display: flex;
+    align-items: start;
+}
+
+.list-month img {
+    width: 25px;
+    margin-right: 5px;
+}
+
+.this-month {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.list-table {
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    background: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    color: #737373;
+}
+
+.list-table__row:first-of-type {
+    border-bottom: 3px solid #E1E1E1;
+}
+
+.list-table__row {
+    border-bottom: 2px solid #E1E1E1;
+}
+
+.list-table__row:last-of-type {
+    border: none;
+}
+
+.list-table__header:first-of-type,
+.list-table__header:last-of-type {
+    width: 20%;
+}
+
+.list-table__header {
+    width: 15%;
+    padding: 10px;
+    letter-spacing: 0.15em;
+}
+
+.list-table__item {
+    padding: 10px;
+    letter-spacing: 0.15em;
+}
+
+.detail-link {
+    text-decoration: none;
+    color: #000000;
+}
+
+.csv-button {
+    margin: 50px 0;
+    text-align: right;
+}
+
+@media screen and (max-width: 850px) {
+    .attendance-list {
+        width: 90%;
+        margin: 40px auto;
+    }
+
+    .attendance-list__header {
+        margin-bottom: 30px;
+    }
+
+    .list-link {
+        margin-bottom: 30px;
+    }
+}

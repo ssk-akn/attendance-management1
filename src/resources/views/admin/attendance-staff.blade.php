@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/list.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin/attendance-staff.css') }}">
 @endsection
 
 @php
@@ -9,12 +9,13 @@
 @endphp
 
 @section('content')
-<div class="list">
-    <div class="list-header">
-        勤怠一覧
+<div class="attendance-list">
+    <div class="attendance-list__header">
+        {{ $user->name . 'さんの勤怠' }}
     </div>
     <div class="list-link">
-        <a href="{{ route('attendance.list', [
+        <a href="{{ route('admin.attendance', [
+            'id' => $user->id,
             'year' => Carbon::create($year, $month, 1)->subMonth()->year,
             'month' => Carbon::create($year, $month, 1)->subMonth()->month,
         ]) }}" class="list-link__item">
@@ -25,7 +26,8 @@
             <img src="{{ asset('image/calendar.png') }}" alt="" class="calendar">
             <span class="this-month">{{ $year . '/' . sprintf('%02d', $month) }}</span>
         </p>
-        <a href="{{ route('attendance.list', [
+        <a href="{{ route('admin.attendance', [
+            'id' => $user->id,
             'year' => Carbon::create($year, $month, 1)->addMonth()->year,
             'month' => Carbon::create($year, $month, 1)->addMonth()->month,
         ]) }}" class="list-link__item">
@@ -67,5 +69,6 @@
         </tr>
         @endforeach
     </table>
+    <div class="csv-button">CSV出力</div>
 </div>
 @endsection

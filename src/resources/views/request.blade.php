@@ -32,7 +32,11 @@
             <td class="request-table__item">{{ $correction->remarks }}</td>
             <td class="request-table__item">{{ $correction->formatted_date }}</td>
             <td class="request-table__item">
+                @if ($isAdmin)
+                <a href="/stamp_correction_request/approve/$correction->id" class="request-table__detail">詳細</a>
+                @else
                 <a href="/attendance/{{ $correction->attendance_id }}" class="request-table__detail">詳細</a>
+                @endif
             </td>
         </tr>
         @endforeach
