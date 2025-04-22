@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Carbon\Carbon;
 
 class AdminCorrectionRequest extends FormRequest
 {
@@ -24,20 +25,21 @@ class AdminCorrectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'work_date' => 'required|date',
+            'date' => 'required|date',
             'new_work_start' => 'required|date_format:H:i',
             'new_work_end' => 'required|date_format:H:i',
             'remarks' => 'required',
             'new_break_start' => 'nullable|array',
             'new_break_end' => 'nullable|array',
-            'new_break_start.*' => 'date_format:H:i',
-            'new_break_end.*' => 'date_format:H:i',
+            'new_break_start.*' => 'nullable|date_format:H:i',
+            'new_break_end.*' => 'nullable|date_format:H:i',
         ];
     }
 
     public function messages()
     {
         return [
+            'date' => '日付を入力してください',
             'new_work_start.required' => '出勤時間を入力してください',
             'new_work_end.required' => '退勤時間を入力してください',
             'remarks.required' => '備考を記入してください',

@@ -25,6 +25,6 @@ class CorrectionController extends Controller
 
         $user = $correction->user;
 
-        return view('request', compact('corrections', 'page', 'user'));
+        return view('request', compact('corrections', 'page', 'user', 'isAdmin'));
     }
 }

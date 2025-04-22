@@ -17,6 +17,7 @@ use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 use Laravel\Fortify\Contracts\LogoutResponse;
+use Laravel\Fortify\Contracts\LoginResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -25,15 +26,20 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse {
+            public function toResponse($request)
+            {
+                if($request->user()->role === 'admin') {
+                    return redirect()->intended('/admin/attendance/list');
+                }
+
+                return redirect()->intended(config('fortify.home'));
+            }
+        });
+
         $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
             public function toResponse($request)
             {
-                $user = $request->user();
-
-                if ($request->is('admin/*')) {
-                    return redirect('/admin/login');
-                }
-
                 return redirect('/login');
             }
         });

@@ -11,19 +11,23 @@ use App\Http\Requests\CorrectionRequest;
 
 class DetailController extends Controller
 {
-    public function getDetail($id)
+    public function getDetail(Request $request, $id)
     {
         $attendance = Attendance::with(['user', 'breaks'])->findOrFail($id);
         $user = $attendance->user;
         $correction = Correction::where('attendance_id', $id)->latest('requested_at')->first();
+        $waitApproval = optional($correction)->status === '承認待ち';
 
         if (!$correction || $correction->status === '認証済み') {
             $correction = null;
         }
 
-        $isAdmin = Auth::user()->isAdmin();
+        if ($request->attributes->get('is_admin')) {
+            return view('admin.detail', compact(['attendance', 'user']));
+        }
 
-        return view('detail', compact('attendance', 'correction', 'user', 'isAdmin'));
+
+        return view('detail', compact('attendance', 'correction', 'user', 'waitApproval'));
     }
 
     public function correction(CorrectionRequest $request)

@@ -1,0 +1,135 @@
+.detail {
+    margin: 0 auto;
+    width: 60%;
+}
+
+.detail-header {
+    margin-bottom: 40px;
+    padding-left: 25px;
+    border-left: 8px solid #000000;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.detail-table {
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.detail-table__row {
+    border-bottom: 2px solid #E1E1E1;
+}
+
+.detail-table__row:last-of-type {
+    border: none;
+}
+
+.detail-table__header {
+    padding: 30px 50px;
+    width: 30%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    color: #737373;
+}
+
+.detail-table__item {
+    width: 70%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.name {
+    margin-left: 35px;
+}
+
+.date {
+    padding: 5px 35px;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.time {
+    width: 20%;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.time-span {
+    margin: 0 30px;
+}
+
+.remarks {
+    margin: 10px 0;
+    padding: 5px 35px;
+    width: 300px;
+    height: 60px;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.error {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    color: #FF6868;
+}
+
+.detail-button {
+    margin-top: 40px;
+    text-align: right;
+}
+
+.detail-button__submit {
+    padding: 8px;
+    width: 130px;
+    border-radius: 5px;
+    background: #000000;
+    letter-spacing: 0.15em;
+    font-size: 22px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 850px) {
+    .detail {
+        width: 80%;
+    }
+
+    .detail-header {
+        font-size: 26px;
+    }
+
+    .detail-table__header {
+        padding: 28px 40px;
+    }
+
+    .name {
+        margin-left: 20px;
+    }
+
+    .date {
+        padding: 5px 20px;
+    }
+
+    .remarks {
+        padding: 5px 20px;
+        width: 250px;
+        height: 40px;
+    }
+
+    .detail-button__submit {
+        padding: 6px;
+        width: 110px;
+        font-size: 20px;
+    }
+}

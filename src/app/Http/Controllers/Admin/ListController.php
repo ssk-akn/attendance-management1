@@ -10,7 +10,7 @@ use App\Services\AttendanceCalculationService;
 
 class ListController extends Controller
 {
-    public function getList(Request $request, AttendanceCalculationService $calcService)
+    public function getAttendanceList(Request $request, AttendanceCalculationService $calcService)
     {
         $year = $request->input('year', now()->year);
         $month = $request->input('month', now()->month);

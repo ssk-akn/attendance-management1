@@ -13,16 +13,29 @@ class CorrectionController extends Controller
         $user = Auth::user();
         $page = request('page', 'wait');
 
-        if ($page === 'approved') {
-            $corrections = Correction::with('attendance')
-            ->where('user_id', $user->id)
-            ->where('status', '承認済み')
-            ->get();
+        if ($request->attributes->get('is_admin')) {
+            if ($page === 'approved') {
+                $corrections = Correction::with('attendance', 'user')
+                ->where('status', '承認済み')
+                ->get();
+            } else {
+                $corrections = Correction::with('attendance', 'user')
+                ->where('status', '承認待ち')
+                ->get();
+            }
+            return view('admin.request', compact(['corrections', 'page']));
         } else {
-            $corrections = Correction::with('attendance')
-            ->where('user_id', $user->id)
-            ->where('status', '承認待ち')
-            ->get();
+            if ($page === 'approved') {
+                $corrections = Correction::with('attendance')
+                ->where('user_id', $user->id)
+                ->where('status', '承認済み')
+                ->get();
+            } else {
+                $corrections = Correction::with('attendance')
+                ->where('user_id', $user->id)
+                ->where('status', '承認待ち')
+                ->get();
+            }
         }
 
         return view('request', compact('user', 'corrections', 'page'));
