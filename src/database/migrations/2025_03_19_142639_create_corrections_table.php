@@ -20,7 +20,7 @@ class CreateCorrectionsTable extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->time('new_work_start');
             $table->time('new_work_end');
-            $table->json('new_breaks');
+            $table->json('new_breaks')->nullable();
             $table->text('remarks');
             $table->string('status')->default('承認待ち');
             $table->timestamp('requested_at')->default(DB::raw('CURRENT_TIMESTAMP'));

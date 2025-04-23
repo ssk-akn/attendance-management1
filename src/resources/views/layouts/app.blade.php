@@ -16,7 +16,17 @@
             </a>
             @if (Auth::check())
             <ul class="header-nav">
-                @yield('link')
+                @if (Auth::user()->isAdmin())
+                <li class="header-nav__item">
+                    <a href="{{ route('admin.list') }}" class="header-nav__link">勤怠一覧</a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="/admin/staff/list" class="header-nav__link">スタッフ一覧</a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="/stamp_correction_request/list" class="header-nav__link">申請一覧</a>
+                </li>
+                @else
                 <li class="header-nav__item">
                     <a href="/attendance" class="header-nav__link">勤怠</a>
                 </li>
@@ -26,6 +36,7 @@
                 <li class="header-nav__item">
                     <a href="/stamp_correction_request/list" class="header-nav__link">申請</a>
                 </li>
+                @endif
                 <li class="header-nav__item">
                     <form action="/logout" method="post" class="logout-form">
                         @csrf

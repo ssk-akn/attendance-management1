@@ -15,7 +15,8 @@
         認証メールが送信されました。
     </div>
     @endif
-    <form action="{{ route('verification.send') }}" method="POST">
+    <a href="http://localhost:8025/" class="verify-link">認証はこちらから</a>
+    <form action="{{ route('verification.send') }}" method="POST" class="verify-form">
         @csrf
         <button class="verification-mail__button" type="submit">
             認証メールを再送する

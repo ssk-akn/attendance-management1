@@ -27,7 +27,7 @@
         @foreach ($corrections as $correction)
         <tr class="request-table__row">
             <td class="request-table__item">{{ $correction->status }}</td>
-            <td class="request-table__item">{{ $user->name }}</td>
+            <td class="request-table__item">{{ $correction->user->name }}</td>
             <td class="request-table__item">{{ $correction->attendance->formatted_stamp }}</td>
             <td class="request-table__item">{{ $correction->remarks }}</td>
             <td class="request-table__item">{{ $correction->formatted_date }}</td>
