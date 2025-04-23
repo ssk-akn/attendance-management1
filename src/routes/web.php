@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\DetailController as AdminDetailController;
 use App\Http\Controllers\Admin\CorrectionController as AdminCorrectionController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\ApproveController;
+use App\Http\Controllers\Admin\CsvDownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/attendance/list', [AdminListController::class, 'getAttendanceList'])->name('admin.list');
         Route::get('/admin/staff/list', [StaffController::class, 'getStaffList']);
         Route::get('/admin/attendance/staff/{id}', [StaffController::class, 'getAttendance'])->name('admin.attendance');
+        Route::post('/attendance/csv', [CsvDownloadController::class, 'downloadCsv']);
         Route::put('/attendance/correction/update', [AdminDetailController::class, 'update'])->name('attendance.update');
         Route::get('/stamp_correction_request/approve/{attendance_correct_request}', [ApproveController::class, 'getCorrection'])
             ->name('admin.correction');

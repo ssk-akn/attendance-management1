@@ -69,6 +69,12 @@
         </tr>
         @endforeach
     </table>
-    <div class="csv-button">CSV出力</div>
+    <form action="/attendance/csv" method="POST" class="csv-form">
+        @csrf
+        <input type="hidden" name="user_id" value="{{ $user->id }}">
+        <div class="csv-button">
+            <button class="csv-button__submit" type="submit">CSV出力</button>
+        </div>
+    </form>
 </div>
 @endsection

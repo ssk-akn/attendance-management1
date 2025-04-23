@@ -93,6 +93,16 @@
     text-align: right;
 }
 
+.csv-button__submit {
+    padding: 5px 25px;
+    background: #000000;
+    border-radius: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #FFFFFF;
+    letter-spacing: 0.15em;
+}
+
 @media screen and (max-width: 850px) {
     .attendance-list {
         width: 90%;
