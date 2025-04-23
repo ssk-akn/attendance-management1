@@ -37,13 +37,4 @@ class LoginRequest extends FortifyLoginRequest
             'password.required' => 'パスワードを入力してください',
         ];
     }
-
-    public function failedValidation(Validator $validator)
-    {
-        $errors = $validator->errors();
-        if (!$errors->has('email') && !$errors->has('password')) {
-            $validator->errors()->add('email', 'ログイン情報が登録されていません。');
-        }
-        parent::failedValidation($validator);
-    }
 }
