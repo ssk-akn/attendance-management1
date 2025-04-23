@@ -40,34 +40,25 @@
     font-weight: bold;
 }
 
-.date-wrap {
-    display: flex;
-}
-
-.year,
-.name,
-.remarks {
+.name {
     margin-left: 35px;
 }
 
-.month {
-    margin-left: 120px;
-}
-
-.time {
-    width: 20%;
-    margin: 10px 0;
-    text-align: center;
+.date {
+    padding: 5px 35px;
     border: 1px solid #E1E1E1;
+    border-radius: 4px;
     font-size: 16px;
     font-weight: bold;
 }
 
-.correction-time {
+
+.time {
     width: 20%;
-    margin: 10px 0;
+    padding: 5px;
     text-align: center;
-    border: none;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
     font-size: 16px;
     font-weight: bold;
 }
@@ -78,18 +69,11 @@
 
 .remarks {
     margin: 10px 0;
-    padding: 5px 10px;
+    padding: 5px 35px;
     width: 300px;
     height: 60px;
     border: 1px solid #E1E1E1;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.correction-remarks {
-    margin-left: 30px;
-    padding: 10px;
-    border: none;
+    border-radius: 4px;
     font-size: 14px;
     font-weight: bold;
 }
@@ -103,12 +87,6 @@
 .detail-button {
     margin-top: 40px;
     text-align: right;
-}
-
-.correction-message {
-    font-size: 18px;
-    font-weight: 800;
-    color: #FF000080;
 }
 
 .detail-button__submit {
@@ -135,29 +113,18 @@
         padding: 28px 40px;
     }
 
-    .year,
-    .name,
-    .work-start,
-    .break-start,
-    .remarks {
+    .name {
         margin-left: 20px;
     }
 
-    .month {
-        margin-left: 100px;
-    }
-
-    .correction-time__span {
-        margin: 0 50px;
+    .date {
+        padding: 5px 20px;
     }
 
     .remarks {
+        padding: 5px 20px;
         width: 250px;
         height: 40px;
-    }
-
-    .correction-remarks {
-        margin-left: 10px;
     }
 
     .detail-button__submit {

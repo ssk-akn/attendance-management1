@@ -1,0 +1,114 @@
+.approve {
+    margin: 0 auto;
+    width: 60%;
+}
+
+.approve-header {
+    margin-bottom: 40px;
+    padding-left: 25px;
+    border-left: 8px solid #000000;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.approve-table {
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.approve-table__row {
+    border-bottom: 2px solid #E1E1E1;
+}
+
+.approve-table__row:last-of-type {
+    border: none;
+}
+
+.approve-table__header {
+    padding: 30px 50px;
+    width: 30%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    color: #737373;
+}
+
+.approve-table__item {
+    width: 70%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.date-wrap {
+    display: flex;
+}
+
+.month {
+    margin-left: 115px;
+}
+
+.correction-time {
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.time-span {
+    margin: 0 55px;
+}
+
+.correction-remarks {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.approve-button {
+    margin-top: 40px;
+    text-align: right;
+}
+
+.approve-button__submit,
+.approved-button__submit {
+    padding: 8px;
+    width: 130px;
+    border: none;
+    border-radius: 5px;
+    letter-spacing: 0.15em;
+    font-size: 22px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.approve-button__submit {
+    background: #000000;
+}
+
+.approved-button__submit {
+    background: #696969;
+}
+
+@media screen and (max-width: 850px) {
+    .approve {
+        width: 80%;
+    }
+
+    .approve-header {
+        font-size: 26px;
+    }
+
+    .approve-table__header {
+        padding: 28px 40px;
+    }
+
+    .correction-time__span {
+        margin: 0 50px;
+    }
+
+    .approve-button__submit,
+    .approved-button__submit {
+        padding: 6px;
+        width: 110px;
+        font-size: 20px;
+    }
+}
