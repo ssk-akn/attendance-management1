@@ -72,7 +72,7 @@ class CorrectionRequest extends FormRequest
                     continue;
                 }
 
-                if ($breakStart->lt($workStart) || $breakEnd->gt($workEnd)) {
+                if ($breakStart->lt($workStart) || $breakStart->gt($workEnd) || $breakEnd->gt($workEnd) || $breakEnd->lt($workStart)) {
                     $validator->errors()->add("new_break_start.$index", '休憩時間が勤務時間外です');
                 }
             }

@@ -7,7 +7,7 @@
 @section('content')
 <div class="list">
     <div class="list-header">
-        {{ $date->format('Y年m月d日の勤怠')}}
+        {{ $date->isoFormat('YYYY年M月D日の勤怠')}}
     </div>
     <div class="list-link">
         <a href="{{ route('admin.list', [

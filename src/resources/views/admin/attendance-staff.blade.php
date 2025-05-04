@@ -16,8 +16,8 @@
     <div class="list-link">
         <a href="{{ route('admin.attendance', [
             'id' => $user->id,
-            'year' => Carbon::create($year, $month, 1)->subMonth()->year,
-            'month' => Carbon::create($year, $month, 1)->subMonth()->month,
+            'year' => Carbon::create($year, $month, 1)->copy()->subMonth()->year,
+            'month' => Carbon::create($year, $month, 1)->copy()->subMonth()->month,
         ]) }}" class="list-link__item">
             <img src="{{ asset('image/left.png') }}" alt="←">
             <span class="previous-month">前月</span>
@@ -28,8 +28,8 @@
         </p>
         <a href="{{ route('admin.attendance', [
             'id' => $user->id,
-            'year' => Carbon::create($year, $month, 1)->addMonth()->year,
-            'month' => Carbon::create($year, $month, 1)->addMonth()->month,
+            'year' => Carbon::create($year, $month, 1)->copy()->addMonth()->year,
+            'month' => Carbon::create($year, $month, 1)->copy()->addMonth()->month,
         ]) }}" class="list-link__item">
         <span class="previous-month">翌月</span>
         <img src="{{ asset('image/right.png') }}" alt="→">
