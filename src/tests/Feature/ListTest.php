@@ -23,9 +23,7 @@ class ListTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance1 = Attendance::create([
             'user_id' => $user->id,
@@ -68,9 +66,7 @@ class ListTest extends TestCase
         $now = Carbon::now();
         Carbon::setTestNow($now);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $now,
-        ]);
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user)->get('/attendance/list');
         $response->assertStatus(200);
@@ -84,9 +80,7 @@ class ListTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 1, 8, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance1 = Attendance::create([
             'user_id' => $user->id,
@@ -133,9 +127,7 @@ class ListTest extends TestCase
         $dateAndTime = Carbon::create(2025, 3, 1, 8, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance1 = Attendance::create([
             'user_id' => $user->id,
@@ -182,9 +174,7 @@ class ListTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,

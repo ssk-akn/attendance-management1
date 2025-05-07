@@ -38,6 +38,7 @@
                     </div>
                 </td>
             </tr>
+            @if(is_array($correction->new_breaks))
             @foreach ($correction->new_breaks as $index => $break)
             <tr class="approve-table__row">
                 <th class="approve-table__header">
@@ -52,6 +53,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
             <tr class="approve-table__row">
                 <th class="approve-table__header">備考</th>
                 <td class="approve-table__item">
@@ -65,7 +67,7 @@
             @if ($correction->status === '承認待ち')
                 <button class="approve-button__submit" type="submit">承認</button>
             @else
-                <button class="approved-button__submit" type="submit">承認済み</button>
+                <button class="approved-button__submit">承認済み</button>
             @endif
         </div>
     </form>

@@ -21,12 +21,9 @@ class DateTest extends TestCase
         $now = Carbon::now();
         Carbon::setTestNow($now);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $now,
-        ]);
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user)->get('/attendance');
-
         $response->assertStatus(200);
         $response->assertSee($now->isoFormat('YYYY年M月D日(ddd)'));
         $response->assertSee($now->isoFormat('HH:mm'));

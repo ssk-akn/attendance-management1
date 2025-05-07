@@ -19,15 +19,13 @@ class ClockInTest extends TestCase
      */
     public function test_clock_in_button_works_properly()
     {
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user)->get('/attendance');
         $response->assertStatus(200);
         $response->assertSee('出勤');
 
-        $response = $this->post('/attendance/work-start');
+        $this->post('/attendance/work-start');
 
         $response = $this->actingAs($user)->get('/attendance');
         $response->assertStatus(200);
@@ -39,9 +37,7 @@ class ClockInTest extends TestCase
         $now = Carbon::now();
         Carbon::setTestNow($now);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $now,
-        ]);
+        $user = User::factory()->create();
 
         Attendance::create([
             'user_id' => $user->id,
@@ -51,7 +47,6 @@ class ClockInTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)->get('/attendance');
-
         $response->assertStatus(200);
         $response->assertDontSee('出勤');
 
@@ -63,15 +58,13 @@ class ClockInTest extends TestCase
         $now = Carbon::now();
         Carbon::setTestNow($now);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user)->get('/attendance');
         $response->assertStatus(200);
         $response->assertSee('勤務外');
 
-        $response = $this->post('/attendance/work-start');
+        $this->post('/attendance/work-start');
 
         $response = $this->actingAs($user)->get('/attendance/list');
         $response->assertStatus(200);

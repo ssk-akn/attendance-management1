@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Attendance;
 use App\Models\BreakTime;
@@ -20,12 +19,7 @@ class DetailTest extends TestCase
      */
     public function test_user_name_is_displayed()
     {
-        $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
-        Carbon::setTestNow($dateAndTime);
-
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -37,18 +31,11 @@ class DetailTest extends TestCase
         $response = $this->actingAs($user)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
         $response->assertSee($user->name);
-
-        Carbon::setTestNow();
     }
 
     public function test_selected_date_is_displayed()
     {
-        $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
-        Carbon::setTestNow($dateAndTime);
-
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -59,20 +46,13 @@ class DetailTest extends TestCase
 
         $response = $this->actingAs($user)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
-        $response->assertSee(Carbon::parse($attendance->date)->isoFormat('YYYY年'));
-        $response->assertSee(Carbon::parse($attendance->date)->isoFormat('M月D日'));
-
-        Carbon::setTestNow();
+        $response->assertSee('2025年');
+        $response->assertSee('4月1日');
     }
 
     public function test_work_times_match_user_records()
     {
-        $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
-        Carbon::setTestNow($dateAndTime);
-
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -83,20 +63,13 @@ class DetailTest extends TestCase
 
         $response = $this->actingAs($user)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
-        $response->assertSee(Carbon::parse($attendance->work_start)->isoFormat('HH:mm'));
-        $response->assertSee(Carbon::parse($attendance->work_end)->isoFormat('HH:mm'));
-
-        Carbon::setTestNow();
+        $response->assertSee('08:45');
+        $response->assertSee('17:45');
     }
 
     public function test_break_times_match_user_records()
     {
-        $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
-        Carbon::setTestNow($dateAndTime);
-
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -113,9 +86,7 @@ class DetailTest extends TestCase
 
         $response = $this->actingAs($user)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
-        $response->assertSee(Carbon::parse($breakTime->break_start)->isoFormat('HH:mm'));
-        $response->assertSee(Carbon::parse($breakTime->break_end)->isoFormat('HH:mm'));
-
-        Carbon::setTestNow();
+        $response->assertSee('13:00');
+        $response->assertSee('14:00');
     }
 }

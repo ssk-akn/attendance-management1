@@ -29,8 +29,9 @@ class AdminLoginTest extends TestCase
             // 'email' => 'admin@example.com',
             'password' => 'password123',
         ]);
-
-        $response->assertSessionHasErrors(['email' => 'メールアドレスを入力してください']);
+        $response->assertSessionHasErrors(['email']);
+        $errors = session('errors');
+        $this->assertEquals('メールアドレスを入力してください', $errors->first('email'));
     }
 
     public function test_password_is_required()
@@ -47,8 +48,9 @@ class AdminLoginTest extends TestCase
             'email' => 'admin@example.com',
             // 'password' => 'password123',
         ]);
-
-        $response->assertSessionHasErrors(['password' => 'パスワードを入力してください']);
+        $response->assertSessionHasErrors(['password']);
+        $errors = session('errors');
+        $this->assertEquals('パスワードを入力してください', $errors->first('password'));
     }
 
     public function test_invalid_credentials_show_error_message()
@@ -65,7 +67,8 @@ class AdminLoginTest extends TestCase
             'email' => 'wrong@example.com',
             'password' => 'password123',
         ]);
-
-        $response->assertSessionHasErrors(['email' => 'ログイン情報が登録されていません']);
+        $response->assertSessionHasErrors(['email']);
+        $errors = session('errors');
+        $this->assertEquals('ログイン情報が登録されていません', $errors->first('email'));
     }
 }

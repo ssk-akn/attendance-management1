@@ -25,12 +25,8 @@ class AdminStaffTest extends TestCase
         $admin = User::factory()->create([
             'role' =>'admin',
         ]);
-        $user1 = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
-        $user2 = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user1 = User::factory()->create();
+        $user2 = User::factory()->create();
 
         $response = $this->actingAs($admin)->get('/admin/staff/list');
         $response->assertStatus(200);
@@ -50,9 +46,7 @@ class AdminStaffTest extends TestCase
         $admin = User::factory()->create([
             'role' =>'admin',
         ]);
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -78,9 +72,7 @@ class AdminStaffTest extends TestCase
         $admin = User::factory()->create([
             'role' =>'admin',
         ]);
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance1 = Attendance::create([
             'user_id' => $user->id,
@@ -97,6 +89,7 @@ class AdminStaffTest extends TestCase
 
         $response = $this->actingAs($admin)->get("/admin/attendance/staff/{$user->id}");
         $response->assertStatus(200);
+
         $response = $this->get(route('admin.attendance', [
             'id' => $user->id,
             'year' => $dateAndTime->copy()->subMonth()->year,
@@ -117,9 +110,7 @@ class AdminStaffTest extends TestCase
         $admin = User::factory()->create([
             'role' =>'admin',
         ]);
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance1 = Attendance::create([
             'user_id' => $user->id,
@@ -136,6 +127,7 @@ class AdminStaffTest extends TestCase
 
         $response = $this->actingAs($admin)->get("/admin/attendance/staff/{$user->id}");
         $response->assertStatus(200);
+
         $response = $this->get(route('admin.attendance', [
             'id' => $user->id,
             'year' => $dateAndTime->copy()->addMonth()->year,
@@ -156,9 +148,7 @@ class AdminStaffTest extends TestCase
         $admin = User::factory()->create([
             'role' =>'admin',
         ]);
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -169,6 +159,7 @@ class AdminStaffTest extends TestCase
 
         $response = $this->actingAs($admin)->get("/admin/attendance/staff/{$user->id}");
         $response->assertStatus(200);
+
         $response = $this->get("/attendance/{$attendance->id}");
         $response->assertSee('2025-04-01');
         $response->assertSee('08:45');

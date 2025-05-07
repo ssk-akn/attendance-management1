@@ -11,6 +11,7 @@ use App\Models\Attendance;
 
 class BreakTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
@@ -21,9 +22,7 @@ class BreakTest extends TestCase
         $now = Carbon::now();
         Carbon::setTestNow($now);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $now,
-        ]);
+        $user = User::factory()->create();
 
         Attendance::create([
             'user_id' => $user->id,
@@ -49,9 +48,7 @@ class BreakTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 1, 8, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $dateAndTime,
-        ]);
+        $user = User::factory()->create();
 
         Attendance::create([
             'user_id' => $user->id,
@@ -78,9 +75,7 @@ class BreakTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 1, 8, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $dateAndTime,
-        ]);
+        $user = User::factory()->create();
 
         Attendance::create([
             'user_id' => $user->id,
@@ -101,7 +96,6 @@ class BreakTest extends TestCase
         $this->patch('/attendance/break-end');
 
         $response = $this->get('/attendance');
-
         $response->assertSee('出勤中');
 
         Carbon::setTestNow();
@@ -112,9 +106,7 @@ class BreakTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 1, 8, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $dateAndTime,
-        ]);
+        $user = User::factory()->create();
 
         Attendance::create([
             'user_id' => $user->id,
@@ -143,9 +135,7 @@ class BreakTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 1, 8, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $dateAndTime,
-        ]);
+        $user = User::factory()->create();
 
         Attendance::create([
             'user_id' => $user->id,

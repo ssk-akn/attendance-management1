@@ -20,12 +20,9 @@ class StatusTest extends TestCase
      */
     public function test_status_is_off_duty()
     {
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user)->get('/attendance');
-
         $response->assertStatus(200);
         $response->assertSee('勤務外');
     }
@@ -35,9 +32,7 @@ class StatusTest extends TestCase
         $now = Carbon::now();
         Carbon::setTestNow($now);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $now,
-        ]);
+        $user = User::factory()->create();
 
         Attendance::create([
             'user_id' => $user->id,
@@ -46,7 +41,6 @@ class StatusTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)->get('/attendance');
-
         $response->assertStatus(200);
         $response->assertSee('出勤中');
 
@@ -58,9 +52,7 @@ class StatusTest extends TestCase
         $now = Carbon::now();
         Carbon::setTestNow($now);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $now,
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -75,7 +67,6 @@ class StatusTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)->get('/attendance');
-
         $response->assertStatus(200);
         $response->assertSee('休憩中');
 
@@ -87,9 +78,7 @@ class StatusTest extends TestCase
         $now = Carbon::now();
         Carbon::setTestNow($now);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $now,
-        ]);
+        $user = User::factory()->create();
 
         Attendance::create([
             'user_id' => $user->id,
@@ -99,7 +88,6 @@ class StatusTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)->get('/attendance');
-
         $response->assertStatus(200);
         $response->assertSee('退勤済');
 

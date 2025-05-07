@@ -25,12 +25,8 @@ class AdminListTest extends TestCase
         $admin = User::factory()->create([
             'role' =>'admin',
         ]);
-        $user1 = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
-        $user2 = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user1 = User::factory()->create();
+        $user2 = User::factory()->create();
 
         $attendance1 = Attendance::create([
             'user_id' => $user1->id,
@@ -79,9 +75,7 @@ class AdminListTest extends TestCase
         $admin = User::factory()->create([
             'role' =>'admin',
         ]);
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance1 = Attendance::create([
             'user_id' => $user->id,
@@ -92,6 +86,7 @@ class AdminListTest extends TestCase
 
         $response = $this->actingAs($admin)->get('/admin/attendance/list');
         $response->assertStatus(200);
+
         $response = $this->get(route('admin.list', [
             'year' => $dateAndTime->copy()->subDay()->year,
             'month' => $dateAndTime->copy()->subDay()->month,
@@ -112,9 +107,7 @@ class AdminListTest extends TestCase
         $admin = User::factory()->create([
             'role' =>'admin',
         ]);
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -125,6 +118,7 @@ class AdminListTest extends TestCase
 
         $response = $this->actingAs($admin)->get('/admin/attendance/list');
         $response->assertStatus(200);
+
         $response = $this->get(route('admin.list', [
             'year' => $dateAndTime->copy()->addDay()->year,
             'month' => $dateAndTime->copy()->addDay()->month,

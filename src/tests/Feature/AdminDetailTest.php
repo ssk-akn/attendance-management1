@@ -25,9 +25,7 @@ class AdminDetailTest extends TestCase
         $admin = User::factory()->create([
             'role' => 'admin',
         ]);
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -52,9 +50,7 @@ class AdminDetailTest extends TestCase
         $admin = User::factory()->create([
             'role' => 'admin',
         ]);
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -65,6 +61,7 @@ class AdminDetailTest extends TestCase
 
         $response = $this->actingAs($admin)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
+
         $response = $this->put('/attendance/correction/update', [
             'new_work_start' => '20:00',
             'new_work_end' => '14:45',
@@ -88,9 +85,7 @@ class AdminDetailTest extends TestCase
         $admin = User::factory()->create([
             'role' => 'admin',
         ]);
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -107,6 +102,7 @@ class AdminDetailTest extends TestCase
 
         $response = $this->actingAs($admin)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
+
         $response = $this->put('/attendance/correction/update', [
             'new_work_start' => '8:45',
             'new_work_end' => '17:45',
@@ -114,8 +110,7 @@ class AdminDetailTest extends TestCase
             'new_break_end' => ['14:00'],
             'remarks' => '打刻漏れのため',
         ]);
-
-        $response->assertSessionHasErrors(['new_break_start.0' => '休憩時間が勤務時間外です']);
+        $response->assertSessionHasErrors(['new_break_start.0']);
         $errors = session('errors');
         $this->assertEquals(
             '休憩時間が勤務時間外です',
@@ -133,9 +128,7 @@ class AdminDetailTest extends TestCase
         $admin = User::factory()->create([
             'role' => 'admin',
         ]);
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -152,6 +145,7 @@ class AdminDetailTest extends TestCase
 
         $response = $this->actingAs($admin)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
+
         $response = $this->put('/attendance/correction/update', [
             'new_work_start' => '8:45',
             'new_work_end' => '17:45',
@@ -159,8 +153,7 @@ class AdminDetailTest extends TestCase
             'new_break_end' => ['18:00'],
             'remarks' => '打刻漏れのため',
         ]);
-
-        $response->assertSessionHasErrors(['new_break_start.0' => '休憩時間が勤務時間外です']);
+        $response->assertSessionHasErrors(['new_break_start.0']);
         $errors = session('errors');
         $this->assertEquals(
             '休憩時間が勤務時間外です',
@@ -178,9 +171,7 @@ class AdminDetailTest extends TestCase
         $admin = User::factory()->create([
             'role' => 'admin',
         ]);
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -191,12 +182,12 @@ class AdminDetailTest extends TestCase
 
         $response = $this->actingAs($admin)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
+
         $response = $this->put('/attendance/correction/update', [
             'new_work_start' => '8:45',
             'new_work_end' => '17:45',
             // 'remarks' => '打刻漏れのため',
         ]);
-
         $response->assertSessionHasErrors(['remarks']);
         $errors = session('errors');
         $this->assertEquals('備考を記入してください', $errors->first('remarks'));

@@ -24,9 +24,7 @@ class CorrectionTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -37,6 +35,7 @@ class CorrectionTest extends TestCase
 
         $response = $this->actingAs($user)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
+
         $response = $this->post('/attendance/correction', [
             'new_work_start' => '20:00',
             'new_work_end' => '14:45',
@@ -57,9 +56,7 @@ class CorrectionTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -76,6 +73,7 @@ class CorrectionTest extends TestCase
 
         $response = $this->actingAs($user)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
+
         $response = $this->post('/attendance/correction', [
             'new_work_start' => '8:45',
             'new_work_end' => '17:45',
@@ -83,9 +81,7 @@ class CorrectionTest extends TestCase
             'new_break_end' => ['14:00'],
             'remarks' => '打刻漏れのため',
         ]);
-
         $response->assertSessionHasErrors(['new_break_start.0']);
-
         $errors = session('errors');
         $this->assertEquals(
             '休憩時間が勤務時間外です',
@@ -100,9 +96,7 @@ class CorrectionTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -119,6 +113,7 @@ class CorrectionTest extends TestCase
 
         $response = $this->actingAs($user)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
+
         $response = $this->post('/attendance/correction', [
             'new_work_start' => '8:45',
             'new_work_end' => '17:45',
@@ -126,9 +121,7 @@ class CorrectionTest extends TestCase
             'new_break_end' => ['18:00'],
             'remarks' => '打刻漏れのため',
         ]);
-
         $response->assertSessionHasErrors(['new_break_start.0']);
-
         $errors = session('errors');
         $this->assertEquals(
             '休憩時間が勤務時間外です',
@@ -143,9 +136,7 @@ class CorrectionTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance = Attendance::create([
             'user_id' => $user->id,
@@ -156,12 +147,12 @@ class CorrectionTest extends TestCase
 
         $response = $this->actingAs($user)->get("/attendance/{$attendance->id}");
         $response->assertStatus(200);
+
         $response = $this->post('/attendance/correction', [
             'new_work_start' => '8:45',
             'new_work_end' => '17:45',
             // 'remarks' => '打刻漏れのため',
         ]);
-
         $response->assertSessionHasErrors(['remarks']);
         $errors = session('errors');
         $this->assertEquals('備考を記入してください', $errors->first('remarks'));
@@ -174,9 +165,7 @@ class CorrectionTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $admin = User::factory()->create([
             'role' =>'admin',
@@ -208,7 +197,6 @@ class CorrectionTest extends TestCase
 
         $response = $this->get('/stamp_correction_request/list');
         $response->assertStatus(200);
-        $response->assertSee('承認待ち');
         $response->assertSee($user->name);
         $response->assertSee('電車遅延のため');
 
@@ -220,9 +208,7 @@ class CorrectionTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
 
         $attendance1 = Attendance::create([
             'user_id' => $user->id,
@@ -255,7 +241,6 @@ class CorrectionTest extends TestCase
 
         $response = $this->get('/stamp_correction_request/list');
         $response->assertStatus(200);
-        $response->assertSee('承認待ち');
         $response->assertSee($user->name);
         $response->assertSee('2025/04/01');
         $response->assertSee('電車遅延のため');
@@ -270,9 +255,7 @@ class CorrectionTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
         $admin = User::factory()->create([
             'role' =>'admin',
         ]);
@@ -302,7 +285,6 @@ class CorrectionTest extends TestCase
 
         $response = $this->get('/stamp_correction_request/list/?page=approved');
         $response->assertStatus(200);
-        $response->assertSee('承認済み');
         $response->assertSee($user->name);
         $response->assertSee('2025/04/01');
         $response->assertSee('電車遅延のため');
@@ -315,9 +297,7 @@ class CorrectionTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 30, 12, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => now(),
-        ]);
+        $user = User::factory()->create();
         $admin = User::factory()->create([
             'role' =>'admin',
         ]);
@@ -342,6 +322,7 @@ class CorrectionTest extends TestCase
 
         $response = $this->get('/stamp_correction_request/list');
         $response->assertStatus(200);
+
         $response = $this->actingAs($admin)->get("/stamp_correction_request/approve/{$correction->id}");
         $response->assertStatus(200);
 

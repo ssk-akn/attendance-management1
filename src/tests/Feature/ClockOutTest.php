@@ -11,6 +11,7 @@ use App\Models\Attendance;
 
 class ClockOutTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
@@ -21,9 +22,7 @@ class ClockOutTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 1, 8, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $dateAndTime,
-        ]);
+        $user = User::factory()->create();
 
         Attendance::create([
             'user_id' => $user->id,
@@ -50,9 +49,7 @@ class ClockOutTest extends TestCase
         $dateAndTime = Carbon::create(2025, 4, 1, 8, 30);
         Carbon::setTestNow($dateAndTime);
 
-        $user = User::factory()->create([
-            'email_verified_at' => $dateAndTime,
-        ]);
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user)->get('/attendance');
         $response->assertStatus(200);
