@@ -11,12 +11,15 @@ use Carbon\Carbon;
 class Correction extends Model
 {
     use HasFactory;
-    
+
     public $timestamps = false;
 
     protected $fillable = [
         'attendance_id',
         'user_id',
+        'new_work_start',
+        'new_work_end',
+        'new_breaks',
         'remarks',
         'status',
         'requested_at',

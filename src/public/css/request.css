@@ -49,7 +49,7 @@
 }
 
 .request-table__header {
-    padding: 10px 25px;
+    padding: 10px 20px;
     text-align: left;
     font-size: 16px;
     font-weight: bold;
@@ -71,7 +71,7 @@
 
 .request-table__detail {
     text-decoration: none;
-    color: #737373;
+    color: #000000;
 }
 
 @media screen and (max-width: 850px) {

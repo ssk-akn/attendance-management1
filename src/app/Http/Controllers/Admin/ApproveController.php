@@ -34,7 +34,7 @@ class ApproveController extends Controller
 
             BreakTime::where('attendance_id', $attendance->id)->delete();
 
-            foreach ($correction->new_breaks as $break) {
+            foreach ($correction->new_breaks ?? [] as $break) {
                 BreakTime::create([
                     'attendance_id' => $attendance->id,
                     'break_start' => $break['start'],
