@@ -30,8 +30,8 @@ class CorrectionRequest extends FormRequest
             'remarks' => 'required',
             'new_break_start' => 'nullable|array',
             'new_break_end' => 'nullable|array',
-            'new_break_start.*' => 'date_format:H:i',
-            'new_break_end.*' => 'date_format:H:i',
+            'new_break_start.*' => 'nullable|date_format:H:i',
+            'new_break_end.*' => 'nullable|date_format:H:i',
         ];
     }
 

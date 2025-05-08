@@ -4,11 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\DetailController;
-use App\Http\Controllers\CorrectionController;
+use App\Http\Controllers\RequestListController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\ListController as AdminListController;
 use App\Http\Controllers\Admin\DetailController as AdminDetailController;
-use App\Http\Controllers\Admin\CorrectionController as AdminCorrectionController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\ApproveController;
 use App\Http\Controllers\Admin\CsvDownloadController;
@@ -55,5 +54,5 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('inject.role')->group(function () {
     Route::get('/attendance/{id}', [DetailController::class, 'getDetail'])->name('attendance.detail');
-    Route::get('/stamp_correction_request/list', [CorrectionController::class, 'getRequestList']);
+    Route::get('/stamp_correction_request/list', [RequestListController::class, 'getRequestList']);
 });

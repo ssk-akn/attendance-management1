@@ -7,6 +7,7 @@
 @section('content')
 @php
     use Carbon\Carbon;
+    $breaksCount = count($attendance->breaks);
 @endphp
 <div class="detail">
     <div class="detail-header">
@@ -71,6 +72,18 @@
                 @enderror
             </tr>
             @endforeach
+            @if (!$waitApproval)
+            <tr class="detail-table__row">
+                <th class="detail-table__header">
+                    {{ '休憩' . ($breaksCount + 1) }}
+                </th>
+                <td class="detail-table__item">
+                    <input type="text" name="new_break_start[]" value="{{ old('new_break_start.$breaksCount') }}" class="time">
+                    <span class="time-span">～</span>
+                    <input type="text" name="new_break_end[]" value="{{ old('new_break_end.$breaksCount') }}" class="time">
+                </td>
+            </tr>
+            @endif
             <tr class="detail-table__row">
                 <th class="detail-table__header">備考</th>
                 <td class="detail-table__item">

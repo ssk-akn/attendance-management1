@@ -69,7 +69,7 @@
 }
 
 .approve-button__submit,
-.approved-button__submit {
+.approved-button {
     padding: 8px;
     width: 130px;
     border: none;
@@ -82,9 +82,11 @@
 
 .approve-button__submit {
     background: #000000;
+    cursor: pointer;
 }
 
-.approved-button__submit {
+.approved-button {
+    display: inline-block;
     background: #696969;
 }
 

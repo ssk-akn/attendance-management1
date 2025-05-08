@@ -83,7 +83,7 @@
             </tr>
         </table>
         <div class="detail-button">
-                <button class="detail-button__submit" type="submit">修正</button>
+            <button class="detail-button__submit" type="submit">修正</button>
         </div>
         <input type="hidden" name="user_id" value="{{ $user->id }}">
         <input type="hidden" name="attendance_id" value="{{ $attendance->id }}">
