@@ -73,7 +73,7 @@
 }
 
 .time-span {
-    margin: 0 30px;
+    margin: 0 20px;
 }
 
 .remarks {
@@ -138,8 +138,7 @@
     .year,
     .name,
     .work-start,
-    .break-start,
-    .remarks {
+    .break-start {
         margin-left: 20px;
     }
 

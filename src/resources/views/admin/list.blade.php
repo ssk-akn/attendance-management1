@@ -7,28 +7,33 @@
 @section('content')
 <div class="list">
     <div class="list-header">
-        {{ $date->format('Y年m月d日の勤怠')}}
+        {{ $date->isoFormat('YYYY年M月D日の勤怠')}}
     </div>
     <div class="list-link">
-        <a href="{{ route('admin.list', [
-            'year' => $date->copy()->subDay()->year,
-            'month' => $date->copy()->subDay()->month,
-            'day' => $date->copy()->subDay()->day,
-        ]) }}" class="list-link__item">
+        <!-- 前月のリンク -->
+        <a
+            href="{{ route('admin.list', [
+                'year' => $date->copy()->subDay()->year,
+                'month' => $date->copy()->subDay()->month,
+                'day' => $date->copy()->subDay()->day,
+            ]) }}" class="list-link__item">
             <img src="{{ asset('image/left.png') }}" alt="←">
             <span class="previous-month">前日</span>
         </a>
+        <!-- 現在の月 -->
         <p class="list-month">
             <img src="{{ asset('image/calendar.png') }}" alt="" class="calendar">
             <span class="this-month">{{ $date->format('Y/m/d') }}</span>
         </p>
-        <a href="{{ route('admin.list', [
-            'year' => $date->copy()->addDay()->year,
-            'month' => $date->copy()->addDay()->month,
-            'day' => $date->copy()->addDay()->day,
-        ]) }}" class="list-link__item">
-        <span class="previous-month">翌日</span>
-        <img src="{{ asset('image/right.png') }}" alt="→">
+        <!-- 翌月のリンク -->
+        <a
+            href="{{ route('admin.list', [
+                'year' => $date->copy()->addDay()->year,
+                'month' => $date->copy()->addDay()->month,
+                'day' => $date->copy()->addDay()->day,
+            ]) }}" class="list-link__item">
+            <span class="previous-month">翌日</span>
+            <img src="{{ asset('image/right.png') }}" alt="→">
         </a>
     </div>
     <table class="list-table">

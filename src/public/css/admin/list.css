@@ -101,4 +101,13 @@
     .list-link {
         margin-bottom: 30px;
     }
+
+    .list-table__header:first-of-type,
+    .list-table__header:last-of-type {
+        width: 25%;
+    }
+
+    .list-table__header {
+        width: 12%;
+    }
 }

@@ -57,6 +57,6 @@ class DetailController extends Controller
         $correction->remarks = $request->remarks;
         $correction->save();
 
-        return redirect('/attendance/list');
+        return redirect()->route('attendance.detail', ['id' => $attendanceId]);
     }
 }

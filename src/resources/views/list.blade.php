@@ -14,10 +14,12 @@
         勤怠一覧
     </div>
     <div class="list-link">
-        <a href="{{ route('attendance.list', [
-            'year' => Carbon::create($year, $month, 1)->subMonth()->year,
-            'month' => Carbon::create($year, $month, 1)->subMonth()->month,
-        ]) }}" class="list-link__item">
+        <a
+            href="{{ route('attendance.list', [
+                'year' => Carbon::create($year, $month, 1)->subMonth()->year,
+                'month' => Carbon::create($year, $month, 1)->subMonth()->month,
+            ]) }}"
+            class="list-link__item">
             <img src="{{ asset('image/left.png') }}" alt="←">
             <span class="previous-month">前月</span>
         </a>
@@ -25,12 +27,14 @@
             <img src="{{ asset('image/calendar.png') }}" alt="" class="calendar">
             <span class="this-month">{{ $year . '/' . sprintf('%02d', $month) }}</span>
         </p>
-        <a href="{{ route('attendance.list', [
-            'year' => Carbon::create($year, $month, 1)->addMonth()->year,
-            'month' => Carbon::create($year, $month, 1)->addMonth()->month,
-        ]) }}" class="list-link__item">
-        <span class="previous-month">翌月</span>
-        <img src="{{ asset('image/right.png') }}" alt="→">
+        <a
+            href="{{ route('attendance.list', [
+                'year' => Carbon::create($year, $month, 1)->addMonth()->year,
+                'month' => Carbon::create($year, $month, 1)->addMonth()->month,
+            ]) }}"
+            class="list-link__item">
+            <span class="previous-month">翌月</span>
+            <img src="{{ asset('image/right.png') }}" alt="→">
         </a>
     </div>
     <table class="list-table">

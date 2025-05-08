@@ -9,10 +9,18 @@
     <div class="request-list__header">申請一覧</div>
     <div class="request-status">
         <div class="request-status__wait">
-            <a href="{{ url('/stamp_correction_request/list/?page=wait') }}" class="{{ $page === 'wait' ? 'active' : 'passive' }}">承認待ち</a>
+            <a
+                href="{{ url('/stamp_correction_request/list/?page=wait') }}"
+                class="{{ $page === 'wait' ? 'active' : 'passive' }}">
+                承認待ち
+            </a>
         </div>
         <div class="request-status__approved">
-            <a href="{{ url('/stamp_correction_request/list/?page=approved') }}" class="{{ $page === 'approved' ? 'active' : 'passive' }}">承認済み</a>
+            <a
+                href="{{ url('/stamp_correction_request/list/?page=approved') }}"
+                class="{{ $page === 'approved' ? 'active' : 'passive' }}">
+                承認済み
+            </a>
         </div>
     </div>
     <table class="request-table">
@@ -32,7 +40,11 @@
             <td class="request-table__item">{{ $correction->remarks }}</td>
             <td class="request-table__item">{{ $correction->formatted_date }}</td>
             <td class="request-table__item">
-                <a href="/stamp_correction_request/approve/{{ $correction->id }}" class="request-table__detail">詳細</a>
+                <a
+                    href="/stamp_correction_request/approve/{{ $correction->id }}"
+                    class="request-table__detail">
+                    詳細
+                </a>
             </td>
         </tr>
         @endforeach

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Correction;
 
-class CorrectionController extends Controller
+class RequestListController extends Controller
 {
     public function getRequestList(Request $request)
     {
