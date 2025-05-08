@@ -2,15 +2,23 @@
 ## プロジェクトの目的
 - 学習を目的とした、勤怠の管理を行うためのアプリです。
 ## 主要機能
-- 
-- 
-- 
-- 
-  - 
-  - 
-  - 
-  - 
-  - 
+- 一般ユーザーの機能
+  - 会員登録、ログイン、ログアウト（メール認証はMailHogを使用）
+  - 勤怠打刻
+  - 勤怠一覧の確認
+  - 勤怠詳細の確認
+  - 勤怠の修正を申請
+  - 勤怠修正申請一覧の確認
+  - 修正申請詳細の確認
+- 管理者の機能
+  - ログイン、ログアウト
+  - 日次勤怠の確認
+  - 勤怠詳細の確認
+  - 勤怠の修正
+  - スタッフ一覧の確認
+  - スタッフごとの勤怠の確認、CSV出力
+  - 勤怠修正申請一覧の確認
+  - 修正申請詳細の確認、承認
 ## 環境構築
 ### Dockerビルド
 1. git clone git@github.com:ssk-akn/fleamarket_simulation.git
@@ -42,26 +50,25 @@ php artisan migrate
 php artisan db:seedphp artisan storage:link
 ```
 ## 開発環境
-- 商品一覧画面：http://localhost/
 - 会員登録：http://localhost/register
+- 打刻画面：http://localhost/attendance
 - mailhog：http://localhost:8025/
 - phpMyAdmin：http://localhost:8080/
 ## ログイン情報
-- 管理者
-  - Email: admin@example.com
-  - Password: password123
 - 一般ユーザー
   - Email: user@example.com
   - Password: password123
+- 管理者
+  - Email: admin@example.com
+  - Password: password123
 ## テーブル設計
 
-![スクリーンショット (7)](https://github.com/user-attachments/assets/15296a9c-0bfa-443f-aa17-66122f118971)
-![スクリーンショット (8)](https://github.com/user-attachments/assets/4eea7c36-02f3-4113-a2ed-48f50a5b45c5)
+![スクリーンショット (15)](https://github.com/user-attachments/assets/c060dd9c-1dac-40eb-95e9-fcf598c8c8d0)
+![スクリーンショット (16)](https://github.com/user-attachments/assets/726d6d18-df60-4d6e-a66e-a91af0aa275a)
 
 ## ER図
 
-![スクリーンショット (9)](https://github.com/user-attachments/assets/89b6412d-3eea-46ff-83a6-98431a26ba66)
-
+![スクリーンショット (14)](https://github.com/user-attachments/assets/a55460f8-ee08-4945-95d9-4e13d8397578)
 
 ## 使用技術(実行環境)
 - PHP8.3.0
