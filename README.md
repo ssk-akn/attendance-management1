@@ -51,6 +51,7 @@ php artisan db:seedphp artisan storage:link
 ```
 ## 開発環境
 - 会員登録：http://localhost/register
+- 管理者ログイン：http://localhost/admin/login
 - 打刻画面：http://localhost/attendance
 - mailhog：http://localhost:8025/
 - phpMyAdmin：http://localhost:8080/
