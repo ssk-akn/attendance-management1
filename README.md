@@ -47,7 +47,7 @@ php artisan migrate
 ```
 7. シーディングの実行
 ```
-php artisan db:seedphp artisan storage:link
+php artisan db:seed
 ```
 ## 開発環境
 - 会員登録：http://localhost/register
